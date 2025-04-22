@@ -1,4 +1,6 @@
 import csv
+import pandas as pd
+
 
 ##Este objeto hace
 #le doy un nombre y me devuelve una lista de listas list[list[]] con todos los datos
@@ -16,25 +18,26 @@ class DataDrill :
 
 
     #leemos el csv
+    #We open it, read it line by line then put it in a list
     def getData(self):
-        data_list=[]
-        with open(self.filename, mode="r", encoding="ISO-8859-1") as file:  
-            csv_reader = csv.reader(file)
-            
-            for row in csv_reader:
-                print("roooooooooooooooooooooooooooooooooooooooooooow")
-                print(row)
-            print(data_list)
-            
-
         
+       
+       data = pd.read_csv(self.filename, encoding="utf-8",sep=",")
+       #print(data.head())
+       return data
+                
+            
 
+               
+            
 #this is how you can get data from the drill
 
 #create an object
-file_tesis= DataDrill("PostulacionesTesis","tesis_form_data.csv")
-file_tesis.greet()
+#file_tesis= DataDrill("PostulacionesTesis","tesis_form_data.csv")
+#file_tesis.greet()
 
 #ask for the data
-file_tesis.getData()
+#tesis_data=file_tesis.getData()
+
+
 

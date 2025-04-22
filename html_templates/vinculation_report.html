@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        #front_page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .page_break {
+            page-break-after: always;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="front_page">
+        <div>
+            <h4>Innovación para la vinculación socioproductiva 2025</h4>
+        </div>
+        <div>
+            <h1>{{nombre_proy}}</h1>
+        </div>
+        <div>
+            <h2> {{nombre}}</h2>
+        </div>
+        <div>
+            <h3>Email: {{correo}}</h3>
+        </div>
+        <div>
+            <h3>Número: {{telefono}}</h3>
+        </div>
+    </div>
+
+
+    <div class="page_break"></div>
+
+
+
+    <h2>1. Resumen del Proyecto</h2>
+    <p>{{resumen_proy}}</p>
+    <div class="page_break"></div>
+
+    <h2>2. Objetivo General</h2>
+    <p class="text">{{obj_general}}</p>
+
+    <h2>3. Objetivos Específicos</h2>
+    <p>{{obj_especificos}}</p>
+
+
+    <h2>4. Proyectos Previos</h2>
+    <p>{{proy_previos}}</p>
+
+    <h2>5. Problema</h2>
+
+    <h3>5.1 ¿Cuál es el problema, oportunidad o necesidad que da origen a su proyecto?</h3>
+    <p>{{problema}}</p>
+    <h3>5.2 ¿A quienes afecta este problema, oportunidad o necesidad?</h3>
+    <p>{{afectados}}</p>
+    <h3>5.3 ¿Cuál es el tamaño del problema, oportunidad o necesidad?</h3>
+    <p>{{tamano}}</p>
+
+
+    <h2>6. Solución</h2>
+
+    <h3>6.1 ¿En qué consiste su propuesta de solución?</h3>
+    <p>{{solucion}}</p>
+    <h3>6.2 ¿Cuál es el estado del arte?</h3>
+    <p>{{estado_arte}}</p>
+    <h3>6.3 Grado de Madurez Tecnológica de la Solución</h3>
+    <p>{{grado_madurez}}</p>
+    <h3>6.4 Grado de diferenciación de su propuesta.</h3>
+    <p>{{grado_diferenciacion}}</p>
+    <h3>6.5 ¿Cuál es la hipótesis que se pondrá a prueba?</h3>
+    <p>{{hipotesis}}</p>
+
+
+    <h2>7. Oportunidad de mercado</h2>
+
+    <h3>7.1 ¿Cuál es el mercado objetivo de su propuesta?</h3>
+    <p>{{mercado_obj}}</p>
+    <h3>7.2 ¿Cuál es su propuesta de continuidad?</h3>
+    <p>{{continuidad}}</p>
+    <h3>7.3 ¿Cuál o cuáles son los actores o entidades claves para el desarrollo del proyecto?</h3>
+    <p>{{actores}}</p>
+
+
+    <h2>8. Equipo</h2>
+
+    <h3>Investigador Responsable</h3>
+
+    <ul>
+        <li>Nombre: {{nombre_resp}}</li>
+        <li>Rut: {{rut_resp}}</li>
+        <li>Unidad Academica: {{ua_resp}}</li>
+        <li>CV Responsable: {{cv_resp}}</li>
+
+    </ul>
+
+    <h3>Investigador(@s)</h3>
+    <p>{{investigadores}}</p>
+
+    <h2>9. Entidad Patrocinadora</h2>
+
+    <p>{{patrocinadores}}</p>
+
+
+    <h2>10. Plan de trabajo y presupuesto</h2>
+    <p>{{plan_presupuesto}}</p>
+
+    <p>Presupuesto total {{presupuesto_total}}</p>
+</body>
+
+</html>

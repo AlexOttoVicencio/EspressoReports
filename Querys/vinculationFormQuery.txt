@@ -1,0 +1,35 @@
+select 
+usuarios.rut,
+usuarios.nombre,
+usuarios.correo,
+usuarios.telefono,
+vinc_socio.nombre_proy,
+vinc_socio.resumen_proy,
+vinc_socio.obj_general,
+vinc_socio.obj_especificos,
+vinc_socio.proy_previos,
+vinc_socio.problema,
+vinc_socio.afectados,
+vinc_socio.tamano,
+vinc_socio.solucion,
+vinc_socio.estado_arte,
+vinc_socio.grado_diferenciacion,
+vinc_socio.estado_arte,
+vinc_socio.grado_madurez,
+vinc_socio.grado_diferenciacion,
+vinc_socio.hipotesis,
+vinc_socio.mercado_obj,
+vinc_socio.continuidad,
+vinc_socio.actores,
+vinc_socio.nombre_resp,
+vinc_socio.rut_resp,
+vinc_socio.ua_resp,
+vinc_socio.cv_resp,
+vinc_socio.investigadores,
+vinc_socio.patrocinadores,
+vinc_socio.plan_presupuesto,
+vinc_socio.presupuesto_total
+
+from vinc_socio 
+join usuarios on usuario_id_fk=usuario_id
+
