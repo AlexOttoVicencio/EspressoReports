@@ -1,5 +1,6 @@
 
 import sys
+import json
 import os
 from jinja2 import Environment,FileSystemLoader
 from weasyprint import HTML, CSS
@@ -45,7 +46,8 @@ report_name="Innovacion_Vinc_Socio"
 for index,row in vinculation_data.iterrows():
     #
     output_filename=f"reports/vinculation_form_reports/{report_name}_{index+1}_{row["nombre"]}.pdf"
-    
+    row["investigadores"] = json.loads(row["investigadores"])
+    row["patrocinadores"] = json.loads(row["patrocinadores"])
     rendered_html = template.render(row)
     HTML(string=rendered_html).write_pdf(output_filename)
     

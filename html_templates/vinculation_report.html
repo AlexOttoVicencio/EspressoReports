@@ -12,6 +12,10 @@
             text-align: center;
         }
 
+        .text {
+            margin-left: 30px;
+        }
+
         .page_break {
             page-break-after: always;
         }
@@ -41,54 +45,56 @@
 
     <div class="page_break"></div>
 
+    <!--Contenido de propuesta -->
+    <div>
+        <h2>1. Resumen del Proyecto</h2>
+        <p class="text">{{resumen_proy}}</p>
+    </div>
 
-
-    <h2>1. Resumen del Proyecto</h2>
-    <p>{{resumen_proy}}</p>
     <div class="page_break"></div>
 
     <h2>2. Objetivo General</h2>
     <p class="text">{{obj_general}}</p>
 
     <h2>3. Objetivos Específicos</h2>
-    <p>{{obj_especificos}}</p>
+    <p class="text">{{obj_especificos}}</p>
 
 
     <h2>4. Proyectos Previos</h2>
-    <p>{{proy_previos}}</p>
+    <p class="text">{{proy_previos}}</p>
 
     <h2>5. Problema</h2>
 
     <h3>5.1 ¿Cuál es el problema, oportunidad o necesidad que da origen a su proyecto?</h3>
-    <p>{{problema}}</p>
+    <p class="text">{{problema}}</p>
     <h3>5.2 ¿A quienes afecta este problema, oportunidad o necesidad?</h3>
-    <p>{{afectados}}</p>
+    <p class="text">{{afectados}}</p>
     <h3>5.3 ¿Cuál es el tamaño del problema, oportunidad o necesidad?</h3>
-    <p>{{tamano}}</p>
+    <p class="text">{{tamano}}</p>
 
 
     <h2>6. Solución</h2>
 
     <h3>6.1 ¿En qué consiste su propuesta de solución?</h3>
-    <p>{{solucion}}</p>
+    <p class="text">{{solucion}}</p>
     <h3>6.2 ¿Cuál es el estado del arte?</h3>
-    <p>{{estado_arte}}</p>
+    <p class="text">{{estado_arte}}</p>
     <h3>6.3 Grado de Madurez Tecnológica de la Solución</h3>
-    <p>{{grado_madurez}}</p>
+    <p class="text">{{grado_madurez}}</p>
     <h3>6.4 Grado de diferenciación de su propuesta.</h3>
-    <p>{{grado_diferenciacion}}</p>
+    <p class="text">{{grado_diferenciacion}}</p>
     <h3>6.5 ¿Cuál es la hipótesis que se pondrá a prueba?</h3>
-    <p>{{hipotesis}}</p>
+    <p class="text">{{hipotesis}}</p>
 
 
     <h2>7. Oportunidad de mercado</h2>
 
     <h3>7.1 ¿Cuál es el mercado objetivo de su propuesta?</h3>
-    <p>{{mercado_obj}}</p>
+    <p class="text">{{mercado_obj}}</p>
     <h3>7.2 ¿Cuál es su propuesta de continuidad?</h3>
-    <p>{{continuidad}}</p>
+    <p class="text">{{continuidad}}</p>
     <h3>7.3 ¿Cuál o cuáles son los actores o entidades claves para el desarrollo del proyecto?</h3>
-    <p>{{actores}}</p>
+    <p class="text">{{actores}}</p>
 
 
     <h2>8. Equipo</h2>
@@ -96,25 +102,44 @@
     <h3>Investigador Responsable</h3>
 
     <ul>
-        <li>Nombre: {{nombre_resp}}</li>
-        <li>Rut: {{rut_resp}}</li>
-        <li>Unidad Academica: {{ua_resp}}</li>
-        <li>CV Responsable: {{cv_resp}}</li>
+        <li><strong>Nombre: </strong>{{nombre_resp}}</li>
+        <li><strong>Rut:  </strong>{{rut_resp}}</li>
+        <li><strong> Unidad Academica: </strong>{{ua_resp}}</li>
+        <li><strong> CV Responsable: </strong>{{cv_resp}}</li>
 
     </ul>
 
-    <h3>Investigador(@s)</h3>
-    <p>{{investigadores}}</p>
-
+    <h3>Investigador@s</h3>
+    <p class="text">
+        {% for investigador in investigadores %}
+            <strong>Nombre del investigador:</strong> {{ investigador.nombre_invest }}<br>
+            <strong>Rut del investigador:</strong> {{ investigador.rut_invest }}<br>
+            <strong>Unidad academoca del investigador:</strong> {{ investigador.unidad_academica_invest }}<br>
+        <br>
+        {% endfor %}
+    
+    </p>
     <h2>9. Entidad Patrocinadora</h2>
 
     <p>{{patrocinadores}}</p>
 
+    {% for patrocinador in patrocinadores %}
+        <p class="text">
+            <strong>Nombre patrocindador:</strong> {{patrocinador.nombre_patrot}} <br>
+            <strong>Rut patrocindador:</strong> {{patrocinador.rut_patro}} <br>
+            <strong>Rubro del patrocindador:</strong> {{patrocinador.rubro_patro}} <br>
+            <strong>Región del patrocindador:</strong> {{patrocinador.region_patro}} <br>
+            <strong>Ciudad del patrocindador:</strong> {{patrocinador.ciudad_patro}} <br>
+            <strong>Descripción:</strong> {{patrocinador.descripcion_patro}} <br>
+            <strong>Link carta de patrocinio:</strong> {{patrocinador.link_carta}} <br>
+        </p>
+
+    {% endfor %}
 
     <h2>10. Plan de trabajo y presupuesto</h2>
     <p>{{plan_presupuesto}}</p>
 
-    <p>Presupuesto total {{presupuesto_total}}</p>
+    <p><strong>Presupuesto total:</strong> {{presupuesto_total}}</p>
 </body>
 
 </html>
