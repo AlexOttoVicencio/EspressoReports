@@ -12,7 +12,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 from tools.data_extraction import DataDrill
 
 #create an object
-file_vinculation= DataDrill("Postulaciones Vinc Socio","VincActualizadas.csv")
+file_vinculation= DataDrill("Postulaciones Vinc Socio","postulacionesVinc28abril.csv")
 
 #ask for the data now we can process it
 vinculation_data=file_vinculation.getData()
@@ -43,11 +43,14 @@ report_name="Innovacion_Vinc_Socio"
 
 
 #now we iterate  each row for a report
+
 for index,row in vinculation_data.iterrows():
     #
     output_filename=f"reports/vinculation_form_reports/{report_name}_{index+1}_{row["nombre"]}.pdf"
     row["investigadores"] = json.loads(row["investigadores"])
     row["patrocinadores"] = json.loads(row["patrocinadores"])
+    row["proy_previos"] = json.loads(row["proy_previos"])
+    row["plan_presupuesto"] = json.loads(row["plan_presupuesto"])
     rendered_html = template.render(row)
     HTML(string=rendered_html).write_pdf(output_filename)
     

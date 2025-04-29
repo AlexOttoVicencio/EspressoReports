@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        #front_page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .text {
+            margin-left: 30px;
+            margin-right: 30px; /* optional: gives it room on the other side */
+            text-align: justify;
+        }
+
+        .page_break {
+            page-break-after: always;
+        }
+        .narrow {
+    margin-left: 30px;
+    margin-right: 30px; /* reduce if needed */
+    word-wrap: break-word; /* ensures long links break to the next line */
+}
+    </style>
+</head>
+
+<body>
+
+    <div id="front_page">
+        <div>
+            <h4>Pontificia Universidad Católica de Valparaiso</h4>
+            <h4>Tesis de postgrado con impacto</h4>
+        </div>
+        <div>
+            <h1>{{nombre_proy}}</h1>
+        </div>
+        <div>
+            <h2> {{nombre}}</h2>
+        </div>
+        <div>
+            <h3>Email: {{correo}}</h3>
+        </div>
+        <div>
+            <h3>Número: {{telefono}}</h3>
+        </div>
+    </div>
+
+
+    <div class="page_break"></div>
+
+    <!--Contenido de propuesta -->
+    <div>
+        <h2>1. Nombre del Proyecto</h2>
+        <p class="text">{{nombre_proy}}</p>
+    </div>
+
+
+    <div>
+        <h2>2. Resumen del Proyecto</h2>
+        <p class="text">{{resumen_proy}}</p>
+    </div>
+
+    <div class="page_break"></div>
+
+    <h2>3. Objetivo General</h2>
+    <p class="text">{{obj_general}}</p>
+
+    <h2>4. Objetivos Específicos</h2>
+    <p class="text">{{obj_especificos}}</p>
+
+    <h2>5. Tesis de Postgrado</h2>
+    <ul class="text">
+        <li><strong>Nombre del proyecto de postgrado:</strong>{{nombre_tesis}}</li>
+        <li><strong>Nombre del programa:</strong>{{nombre_programa}}</li>
+        <li><strong>Fecha de inicio:</strong>{{fecha_inicio}}</li>
+        <li><strong>Fecha de termino (estimada):</strong>{{fecha_termino}}</li>
+        <li><strong>Resumen:</strong>{{resumen_tesis}}</li>
+        
+    </ul>
+
+
+
+    <h2>6. Problema</h2>
+
+    <h3>6.1 ¿Cuál es el problema, oportunidad o necesidad que da origen a su proyecto?</h3>
+    <p class="text">{{problema}}</p>
+    <h3>6.2 ¿A quienes afecta este problema, oportunidad o necesidad?</h3>
+    <p class="text">{{afectados}}</p>
+    <h3>6.3 ¿Cuál es el tamaño del problema, oportunidad o necesidad?</h3>
+    <p class="text">{{tamano}}</p>
+
+
+    <h2>7. Solución</h2>
+
+    <h3>7.1 ¿En qué consiste su propuesta de solución?</h3>
+    <p class="text">{{solucion}}</p>
+    <h3>7.2 ¿Cuál es el estado del arte?</h3>
+    <p class="text">{{estado_arte}}</p>
+    <h3>7.3 Grado de diferenciación de su propuesta.</h3>
+    <p class="text">{{grado_diferenciacion}}</p>
+    <h3>7.4 ¿Cuál es la hipótesis que se pondrá a prueba?</h3>
+    <p class="text">{{hipotesis}}</p>
+    <h3>7.5 Grado de Madurez Tecnológica de la Solución</h3>
+    <p class="text">{{grado_madurez}}</p>
+
+
+    <h2>8. Oportunidad de mercado</h2>
+
+    <h3>8.1 ¿Cuál es el mercado objetivo de su propuesta?</h3>
+    <p class="text">{{mercado_obj}}</p>
+    <h3>8.2 ¿Cuál es su propuesta de continuidad?</h3>
+    <p class="text">{{continuidad}}</p>
+    <h3>8.3 ¿Potencial vinculación con el entorno socioproductivo</h3>
+    <p class="text">{{vinculacion_entorno}}</p>
+
+
+
+
+    <h2>9.Antecedentes del Director(a) y Profesor(a) Guía</h2>
+
+    <h3>Director (a) Responsable</h3>
+
+    <ul class="narrow">
+        <li><strong>Nombre: </strong>{{nombre_dir}}</li>
+        <li><strong>Rut: </strong>{{rut_dir}}</li>
+        <li ><strong> CV Responsable: </strong>{{cv_dir}}</li>
+
+    </ul>
+
+    <h3>Profesor Guía</h3>
+
+    {% for profesor in profesor_guia %}
+    <p class="text">
+    <ul class="narrow">
+        <li><strong>Profesor guía:</strong>{{profesor.nombre_guia}}</li>
+        <li><strong>Rut:</strong>{{profesor.rut_guia}}</li>
+        <li><strong>Unidad Academica:</strong>{{profesor.unidad_academica_guia}}</li>
+
+    </ul>
+
+    {% endfor %}
+    <ul class="narrow">
+        <li><strong>Link carta de patrocinio:</strong> {{link_patrocino}}</li>
+    </ul>
+    </p>
+
+
+    <h2>10. Plan de trabajo y presupuesto</h2>
+
+
+    {% for plan in plan_presupuesto %}
+    <div style="margin-bottom: 20px;">
+        <p><strong>Objetivo específico:</strong> {{ plan.obj_especifico }}</p>
+
+        <p><strong>Actividades:</strong></p>
+        <ul>
+            {% for actividad in plan.actividades %}
+            <li style="margin-bottom: 10px;">
+                <strong>{{ actividad.nombre_act }}</strong><br>
+                <em>{{ actividad.descripcion.replace('\n', '<br>') | safe }}</em><br>
+                <strong>Presupuesto:</strong> ${{ actividad.presupuesto }}<br>
+                <strong>Duración:</strong> {{ actividad.meses }} meses
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+
+    <p><strong>Presupuesto total:</strong> {{presupuesto_total}}</p>
+</body>
+
+</html>
